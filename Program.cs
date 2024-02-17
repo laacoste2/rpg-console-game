@@ -12,6 +12,7 @@ namespace ConsoleRpgGame
 
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("Bem vindo ao 'RPG Game'");
                 Console.WriteLine("A classe do seu personagem é: " + warrior.name);
                 Console.WriteLine("Digite [P] para prosseguir à aventura | Digite outra coisa para sair");
@@ -46,7 +47,8 @@ namespace ConsoleRpgGame
                             warrior.Gold = spider.Gold;
 
                             Console.WriteLine("Seu personagem tem " + warrior.Gold + " de ouro");
-                            Console.WriteLine("Prosseguindo na aventura...");
+                            Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - ");
+                            Console.WriteLine("\nProsseguindo na aventura...");
 
                             Console.ReadLine();
                             Console.Clear();
@@ -95,13 +97,14 @@ namespace ConsoleRpgGame
                 Console.WriteLine("...");
                 Console.ReadLine();
                 Console.WriteLine("Após alguns minutos de caminhada, seu personagem encontrou uma rua levando a dois caminhos diferentes");
-                Console.WriteLine("No caminho à esquerda, há uma placa escrito: Loja Adiante!");
-                Console.WriteLine("No caminho à direita, há uma placa escrito: Dungeon Adiante!");
-                Console.WriteLine("[E] para ir à esquerda | [D] para ir à direita");
+                Console.WriteLine("\nNo caminho à esquerda, há uma placa escrito: Loja Adiante!");
+                Console.WriteLine("\nNo caminho à direita, há uma placa escrito: Dungeon Adiante!");
+                Console.WriteLine("\n[E] para ir à esquerda | [D] para ir à direita");
                 string actionThree = Console.ReadLine();
 
                 if(actionThree == "E")
                 {
+                    Console.Clear();
                     Console.WriteLine("Seu personagem começa a se mover para o caminho à esquerda");
                     Console.ReadLine();
                     Console.WriteLine("...");
@@ -146,23 +149,24 @@ namespace ConsoleRpgGame
                 }
                 else if(actionThree == "D")
                 {
+                    Console.Clear();
                     Console.WriteLine("Seu personagem começa a se mover para o caminho à direita");
                     Console.ReadLine();
                     Console.WriteLine("...");
-                    Console.WriteLine("Ao longo do caminho, seu personagem percebe a decadência da rua em que está andando");
-                    Console.WriteLine("Quanto mais você anda, a rua vai ficando mas decadente... Como se ninguem tivesse ido fazer a manutenção dela");
-                    Console.WriteLine("...");
+                    Console.WriteLine("\nAo longo do caminho, seu personagem percebe a decadência da rua em que está andando");
+                    Console.WriteLine("\nQuanto mais você anda, a rua vai ficando mas decadente... Como se ninguem tivesse ido fazer a manutenção dela");
+                    Console.WriteLine("\n...");
                     Console.ReadLine();
                     Console.WriteLine("Após mais alguns minutos de caminhada, você chega ao local que a placa de anteriormente se referia");
-                    Console.WriteLine("O local possuia um espaço como se fosse a entrada");
-                    Console.WriteLine("Você segue adiante e desce ao que parecia uma entrada de caverna");
-                    Console.WriteLine("Ao chegar ao local, você percebe uma outra entrada, dessa vez com uma porta");
-                    Console.WriteLine("Acima dessa porta há uma placa escrito: 'Perigo!! Dungeon Perigo!!'");
+                    Console.WriteLine("\nO local possuia um espaço como se fosse a entrada");
+                    Console.WriteLine("\nVocê segue adiante e desce ao que parecia uma entrada de caverna");
+                    Console.WriteLine("\nAo chegar ao local, você percebe uma outra entrada, dessa vez com uma porta");
+                    Console.WriteLine("\nAcima dessa porta há uma placa escrito: 'Perigo!! Dungeon Perigo!!'");
                     Console.ReadLine();
                     Console.WriteLine("...");
                     Console.ReadLine();
                     Console.WriteLine("Entrando...");
-                    Console.WriteLine("...");
+                    Console.WriteLine("\n...");
                     Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("Logo após abrir a porta, você percebe dois monstros de costas, como se estivessem de guarda");
@@ -180,34 +184,37 @@ namespace ConsoleRpgGame
                         Console.WriteLine("\n- Monstro 2 morreu - ");
                     }else if(actionFive == "N")
                     {
+                        Console.Clear();
                         Console.WriteLine("Como você não fez nada, os monstros perceberam sua presença");
-                        Console.WriteLine("Após isso, você é obrigado a iniciar um combate com os dois ao mesmo tempo");
+                        Console.WriteLine("\nApós isso, você é obrigado a iniciar um combate com os dois ao mesmo tempo");
 
                         Console.WriteLine("[A]tacar");
                         string actionSix = Console.ReadLine();
 
-                        Spider spiderTwo = new Spider(100, 20, 115);
-                        Spider spiderThree = new Spider(100, 20, 115);
+                        Warrior warriorTwo = new Warrior(100, 20);
+                        Spider spiderTwo = new Spider(100, 5, 115);
+                        Spider spiderThree = new Spider(100, 5, 115);
 
                         if (actionSix == "A")
                         {
                             int x = 1;
-                            while (warrior.Health > 1 && x == 1)
+                            while (warriorTwo.Health > 1 && x == 1)
                             {
-                                if (warrior.Health < 1)
+                                if (warriorTwo.Health < 1)
                                 {
                                     Console.WriteLine("O seu personagem morreu... Voltando ao ínicio do 'RPG Game'");
                                     Console.ReadLine();
                                 }
-                                else if (spider.Health < 1)
+                                else if (spiderTwo.Health < 1 && spiderThree.Health <1)
                                 {
+                                    Console.Clear();
                                     Console.WriteLine("O monstro morreu...");
-                                    Console.WriteLine("Seu personagem ganhou " + spider.Gold + "de gold");
-                                    Console.WriteLine("Seu personagem ganhou " + spider.Gold + "de gold");
+                                    Console.WriteLine("\nSeu personagem ganhou " + spiderTwo.Gold + "de gold");
+                                    Console.WriteLine("Seu personagem ganhou " + spiderThree.Gold + "de gold");
 
-                                    warrior.Gold = spider.Gold + spider.Gold;
+                                    warrior.Gold = spiderTwo.Gold + spiderThree.Gold;
 
-                                    Console.WriteLine("Você tem " + warrior.Gold + " de gold");
+                                    Console.WriteLine("\nVocê tem " + warriorTwo.Gold + " de gold");
 
                                     Console.ReadLine();
                                     x = 1;
@@ -220,9 +227,10 @@ namespace ConsoleRpgGame
                                 if (actionTwo == "A")
                                 {
                                     Console.Clear();
-                                    warrior.Attack(spider);
-                                    spiderTwo.Attack(warrior);
-                                    spiderThree.Attack(warrior);
+                                    warriorTwo.Attack(spiderTwo);
+                                    warriorTwo.Attack(spiderThree);
+                                    spiderTwo.Attack(warriorTwo);
+                                    spiderThree.Attack(warriorTwo);
                                     x = 1;
                                 }
                                 else if (actionTwo == "F")

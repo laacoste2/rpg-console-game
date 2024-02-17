@@ -34,7 +34,7 @@ namespace ConsoleRpgGame
             {
                 character.Health -= Strenght * 2;
 
-                Console.WriteLine("A aranh deu um acerto crítico de " + (Strenght * 2) + " de dano");
+                Console.WriteLine("A aranha deu um acerto crítico de " + (Strenght * 2) + " de dano");
                 Console.WriteLine("Seu personagem ficou com " + character.Health + " de vida");
 
             }
